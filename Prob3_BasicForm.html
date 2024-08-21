@@ -1,0 +1,53 @@
+<!-- Description:
+Design an HTML form with fields for a user's first name, last name, and email address. Include a
+submit button that doesn't perform any action but demonstrates the form layout.
+Requirements:
+● Use HTML to create input fields for first name, last name, and email.
+● Add a submit button.
+● Use basic CSS to style the form, making sure each input field and button is clearly
+visible and spaced appropriately -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Form Using Html and Css</title>
+    <style>
+        *{
+           background-color: aquamarine;
+        }
+        form{
+            background-color: black;
+            color: white;
+            width: 100vw;
+            height: 50vh;
+            
+        }
+        input{
+            margin: 6.6px ;
+            padding: 3px;
+            border: 2px solid pink;
+            border-radius: 10px;
+        }
+        button{
+            margin: 6.6px ;
+            padding: 3px;
+            border: 2px solid pink;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <form action="userForm" >
+        First Name : <input type="text" placeholder="Please Enter Your First Name ">
+        <br>
+        Last Name : <input type="text" placeholder="Please Enter Your Last Name ">
+        <br>
+        Email : <input type="email" placeholder="Please Enter Your Email ">
+        <br>
+        <button>Submit</button>
+    </form>
+    
+</body>
+</html>
