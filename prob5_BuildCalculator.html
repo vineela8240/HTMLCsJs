@@ -1,0 +1,153 @@
+<!-- Develop a basic HTML page that includes a calculator with buttons for numbers 0-9 and basic
+arithmetic operations (addition, subtraction, multiplication, division). Include a display area to
+show the result.
+Requirements:
+● Use HTML to create buttons for numbers and operations, and an area to display the
+result.
+● Apply basic CSS to style the buttons and display area.
+● Write JavaScript to handle button clicks and perform basic arithmetic calculations,
+updating the display with the result. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Calculator</title>
+    <style>
+        #display{
+            height: 35px;
+            width: 200px;
+            border: 5px solid red;
+            border-radius: 30px;
+
+        }
+        .calculator{
+            
+            border-radius: 4px solid red;
+            background-color: blueviolet;
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            
+        }
+
+        .FstRow,.SndRow,.TrdRow,.ForRow{
+           
+        }
+        button{
+            margin: 6px;
+            text-align: center;
+            border: 3px solid blue;
+            border-radius: 5px;
+            width: 40px;
+            height: 35px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="calculator">
+        <input type="text" name="" id="display">
+
+        <div class="FstRow">
+            <button id="1" onclick="addValue('1')">1</button>
+            <button id="2" onclick="addValue('2')">2</button>
+            <button id="3" onclick="addValue('3')">3</button>
+            <button id="+" onclick="operator('+')">+</button>
+        </div>
+        <div class="SndRow">
+            <button id="4" onclick="addValue('4')">4</button>
+            <button id="5" onclick="addValue('5')">5</button>
+            <button id="6" onclick="addValue('6')">6</button>
+            <button id="-"  onclick="operator('-')">-</button>
+        </div>
+        <div class="TrdRow">
+            <button id="7" onclick="addValue('7')">7</button>
+            <button id="8" onclick="addValue('8')">8</button>
+            <button id="9" onclick="addValue('9')">9</button>
+            <button id="*" onclick="operator('*')">*</button>
+        </div>
+        <div class="ForRow">
+             
+            <button id="AC" onclick="allClear()">AC</button>
+            <button id="0" onclick="addValue('0')">0</button>
+            <button id="=" onclick="result()">=</button>  
+            <button id="/" onclick="operator('/')">/</button>
+        </div>
+       
+
+    </div>
+
+    <script>
+        let firstNumber=null;
+        let secondNumber=null;
+        let display='';
+        let operand=null;
+        let stringValue='';
+        function addValue(val){
+            display=display+val;
+            stringValue=stringValue+val;
+            print();
+        }
+
+        function operator(p){
+            if(operand!=null){
+                calculate();
+            }
+            firstNumber=parseFloat(display);
+            operand=p;
+            stringValue=stringValue+p;
+            print();
+            // calculate();
+            display='';
+        }
+
+        function result(){
+            secondNumber= parseFloat(display);
+             switch(operand){
+                case '+':
+                    display= firstNumber+secondNumber;
+                    stringValue=stringValue+"= "+display;
+                    print();
+                    break;
+                case '-':
+                    display= firstNumber-secondNumber;
+                    stringValue=stringValue+"= "+display;
+                    print();
+                    break;
+                case '*':
+                    display= firstNumber*secondNumber;
+                    stringValue=stringValue+"= "+display;
+                    print();
+                    break;
+                case '/':
+                    display= firstNumber/secondNumber;
+                    stringValue=stringValue+"= "+display;
+                    print();
+                    break;
+             }
+             console.log(firstNumber+",  "+secondNumber)
+             operand=null;
+             
+
+        }
+
+        function allClear(){
+            display='';
+            firstNumber=null;
+            secondNumber=null;
+            operand=null;
+            stringValue='';
+            print();
+        }
+
+        function print(){
+           let p= document.getElementById('display');
+           p.style.fontSize="18px";
+           p.value=stringValue;
+        }
+    </script>
+    
+</body>
+</html>
